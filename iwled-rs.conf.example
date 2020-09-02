@@ -1,0 +1,38 @@
+# See https://openwrt.org/docs/guide-user/base-system/led_configuration for move info on leds
+# If you want to compile it for your openwrt device see https://github.com/tekjar/rust-on-openwrt
+# Default path for this config /etc/iwled-rs/iwled-rs.conf or you can specify it with first argument
+
+#Delay between dumps
+dump_delay=10
+
+#Low signal cap in reversed dBm
+low_signal_cap=20 
+
+#Generic led
+
+# Trigger type when not connected
+no_signal_trigger=none 
+
+# Trigger type when signal is above #signal_low
+
+signal_trigger=default-on 
+# Trigger type when signal is below #signal_low
+low_signal_trigger=timer 
+low_signal_delay=100 # Base blink delay in ms
+
+# Device as displayed in log messages
+[Some_device] 
+# MAC address of client
+bssid="FF:FF:FF:FF:FF"
+# Name of led to tinker with
+led="device:color:name"
+# Custom signal_low for this device
+low_signal_cap=20
+# Custom  Trigger type when not connected
+no_signal_trigger=default-on
+# Custom Trigger type when signal is above #signal_low
+signal_trigger=timer
+# Custom blink delay in ms
+signal_delay=1000
+# Custom Trigger type when signal is below #signal_low
+low_signal_trigger=none
