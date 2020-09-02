@@ -104,6 +104,7 @@ dependencies = [
 [[package]]
 name = "nl80211"
 version = "0.0.2"
+source = "git+https://github.com/deinferno/nl80211.git?branch=master#c4caba12ebdd3337fb121b5d061ac742cb895aa2"
 dependencies = [
  "buffering",
  "hex",
