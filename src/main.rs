@@ -130,8 +130,8 @@ fn bss_dump(config: &Config, clients: &Vec<Client>) -> Result<()> {
         match cstations.get(bssid) {
             Some(station) => {
                 let led = client.led.as_ref().context("Failed to get led object")?;
-                let signal =
-                    100 + (parse_u8(&station.signal.clone().context("Failed to get signal")?) as u64);
+                let signal = 100
+                    + (parse_u8(&station.signal.clone().context("Failed to get signal")?) as u64);
                 if signal
                     > client.low_signal_cap.unwrap_or(
                         config
@@ -150,8 +150,8 @@ fn bss_dump(config: &Config, clients: &Vec<Client>) -> Result<()> {
                         let delay = client
                             .signal_delay
                             .unwrap_or(config.signal_delay.context("Failed to get signal_delay")?);
-                        led.set_delay_on(delay*signal)?;
-                        led.set_delay_off(delay*signal)?;
+                        led.set_delay_on(delay * signal)?;
+                        led.set_delay_off(delay * signal)?;
                     }
                 } else {
                     let trigger = client.low_signal_trigger.as_ref().unwrap_or(
@@ -223,12 +223,12 @@ fn main() -> Result<()> {
         }
     }
 
-    println!("Loaded config from {}",path);
+    println!("Loaded config from {}", path);
 
     let dump_delay =
         time::Duration::from_secs(config.dump_delay.context("Dump delay isn't specified")?);
 
-        println!("{:#?}",dump_delay);
+    println!("{:#?}", dump_delay);
 
     loop {
         bss_dump(&config, &clients)?;
