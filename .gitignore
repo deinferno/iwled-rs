@@ -1,3 +1,5 @@
 /target
 .env.sh
+.cargo
+Xargo.toml
 iwled-rs.conf
